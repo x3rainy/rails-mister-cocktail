@@ -2,3 +2,12 @@
 @import "alert";
 @import "avatar";
 @import "navbar";
+@import "card";
+@import "container";
+@import "banner";
+
+body {
+  background: rgb(174,238,193);
+  background: radial-gradient(circle, rgba(174,238,193,1) 0%, rgba(161,187,218,1) 82%);
+}
+

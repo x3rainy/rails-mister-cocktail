@@ -1,0 +1,31 @@
+<body>
+  <%= render 'shared/navbar' %>
+
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://source.unsplash.com/1600x900/?martini);">
+    <div class="container">
+      <h1 class="text-center"><%= @cocktail.name %></h1>
+    </div>
+  </div>
+
+  <div class="p-4">
+    <div class="ingredient-box alert-info">
+      <div class="d-flex justify-content-between align-items-start border-bottom mb-2">
+        <h4>Ingredients</h4>
+        <%= link_to 'Add an ingredient', new_cocktail_dose_path(@cocktail), class: "btn btn-primary btn-sm" %>
+      </div>
+
+      <% if @cocktail.doses.empty? %>
+        <p>No ingredients yet!</p>
+      <% end %>
+
+      <% @cocktail.doses.each do |dose| %>
+        <p class="mb-0"><strong><%= dose.ingredient.name %></strong> - <%= dose.description %>
+          <%= link_to cocktail_dose_path(dose.cocktail, dose), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fas fa-trash-alt" style="color: #b86d40"></i>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</body>
+
