@@ -1,16 +1,12 @@
 <body>
   <%= render 'shared/navbar' %>
-  <%= render 'shared/banner_cocktail'  %>
+  <%= render 'shared/banner_cocktail' %>
 
-  <div class="d-flex justify-content-around align-items-center p-3 mb-3">
-    <h1>Cocktails List</h1>
-  </div>
-
-  <div class="d-flex justify-content-center flex-wrap">
+  <div class="d-flex justify-content-center flex-wrap p-3">
     <% @cocktails.each do |cocktail| %>
       <%= link_to cocktail_path(cocktail), class: "text-decoration-none" do %>
         <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>')">
-          <%= cocktail.name %>
+          <h3><%= cocktail.name %></h3>
           <%= link_to "+", cocktail_path(cocktail), method: :delete, data: { confirm: "Are you sure?" }, class: "card-btn card-link-remove" %>
           <%= link_to edit_cocktail_path(cocktail), class: "card-btn card-link-add" do %>
             <i class="fas fa-edit fa-xs" style="color: yellow"></i>
